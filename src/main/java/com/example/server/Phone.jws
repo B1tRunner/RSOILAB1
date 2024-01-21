@@ -1,0 +1,43 @@
+package com.example.server;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Phone {
+    public String phone_name(String phone) throws IOException {
+        String name= "";
+        String line;
+
+        FileReader fr = new FileReader("phones.txt");
+        BufferedReader in = new BufferedReader(fr);
+        while ((line=in.readLine()) != null){
+            String[] strings = line.split(" ");
+            if (strings[0].equals(phone)) {
+                name = strings[1];
+                break;
+            } else {
+                name = "phone number not found";
+            }
+        }
+        return name;
+    }
+
+    public String name_phone(String name) throws IOException {
+        String phone = "";
+        String line;
+
+        FileReader fr = new FileReader("phones.txt");
+        BufferedReader in = new BufferedReader(fr);
+        while ((line=in.readLine()) != null){
+            String[] strings = line.split(" ");
+            if (strings[0].equals(name)) {
+                phone = strings[1];
+                break;
+            } else {
+                phone = "name not found";
+            }
+        }
+        return phone;
+    }
+}
